@@ -23,4 +23,3 @@ schedule.every(30).minutes.do(download)
 while 1:
 	schedule.run_pending()
 	time.sleep(1)
-
