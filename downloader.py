@@ -13,11 +13,12 @@ def download():
 				continue
 			artistname = row[1]
 			artistname = artistname.replace(' ', '\ ')
-			outputpath = 'music/' + artistname + '/%(title)s.%(ext)s'
+			outputpath = 'music/' + artistname + '\ -\ ' + 'Uploads' + '/%(title)s.%(ext)s'
 			outputpath = outputpath.replace('(', '\(')
 			outputpath = outputpath.replace(')', '\)')
-			subprocess.check_call('youtube-dl --add-metadata --embed-thumbnail --playlist-end 30 --dateafter now-1month -f 140 -i -o ' + outputpath + ' ' + row[0], shell=True)
+			subprocess.check_call('youtube-dl --add-metadata --embed-thumbnail --playlist-end 10 --dateafter now-1month -f 140 -i -o ' + outputpath + ' ' + row[0], shell=True)
 
+download()
 schedule.every(30).minutes.do(download)
 
 while 1:
