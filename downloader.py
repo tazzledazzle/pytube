@@ -6,12 +6,12 @@ import logging
 from datetime import datetime
 
 def loadConfig():
-	with open('channels.csv', 'rb') as csvFile
-		read = csv.reader(csvFile)
+	with open('channels.csv', 'rb') as csvFile:
+		reader = csv.reader(csvFile)
 		headerLine = True
 		rowsList = []
 		for row in reader:
-			if headerLine
+			if headerLine:
 				headerLine = False
 				continue
 			rowTup = (row[0], row[1])
@@ -23,7 +23,7 @@ def buildArtistName(artistName):
 	return artistName
 
 def buildOutputPath(artistName):
-	outputpath = 'music/' + artistname + '\ -\ ' + 'Uploads' + '/%(title)s.%(ext)s'
+	outputpath = 'music/' + artistName + '\ -\ ' + 'Uploads' + '/%(title)s.%(ext)s'
 	outputpath = outputpath.replace('(', '\(')
 	outputpath = outputpath.replace(')', '\)')
 	return outputpath
