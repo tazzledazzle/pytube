@@ -34,7 +34,7 @@ def download():
 	for row in config:
 		artistname = buildArtistName(row[1])
 		outputpath = buildOutputPath(artistname)
-		script = 'youtube-dl --add-metadata --embed-thumbnail --playlist-end 10 --dateafter now-1month -f 140 -i -o ' + outputpath + ' ' + row[0]
+		script = 'youtube-dl --add-metadata --embed-thumbnail --playlist-end 10 --dateafter now-2month -f 140 -i -o ' + outputpath + ' ' + row[0]
 		with open('youtube-dl-log.log', "w") as outfile:
 			try:
 				subprocess.check_call(script, shell=True, stdout=outfile)
