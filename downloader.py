@@ -40,10 +40,21 @@ def download():
 				subprocess.check_call(script, shell=True, stdout=outfile)
 			except:
 				logging.info('Something went wrong while executing command.')
+	#upload_google()
 	logging.info('End Processing: ' + datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
+def upload_google():
+	logging.info('Begin Google Upload: ' + datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+	with open('google-upload.log', "w") as outfile:
+		try:
+			script = 'python /home/michael/git/gmusicapi-scripts/gmsync.py -c /home/michael/youtube-downloader/oauth /home/michael/youtube-downloader/music'
+			subprocess.check_call(script, shell=True, stdout=outfile)
+		except:
+			logging.info('Something went wrong while executing command.')
+	logging.info('End Google Upload: ' + datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
 logging.basicConfig(filename='app.log', level=logging.INFO)
+#upload_google()
 download()
 schedule.every(30).minutes.do(download)
 
